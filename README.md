@@ -1,8 +1,8 @@
-GRA41522 : Object Oriented Programming with Python
+Final project for GRA4152 - Object Oriented Programming with Python
 
 1. Every file should be in the same directory.
 
-2. To read this docstring, use Python’s built-in help system:
+2. To read the docstring, use Python’s built-in help system:
     * help(MODULE_NAME)
     * python -c "import MODULE_NAME; help(MODULE_NAME)"
     * pydoc MODULE_NAME
