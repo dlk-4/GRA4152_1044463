@@ -1,4 +1,4 @@
-Final project for GRA4152 - Object Oriented Programming with Python
+GRA41522 : Object Oriented Programming with Python
 
 1. Every file should be in the same directory.
 
@@ -9,4 +9,4 @@ Final project for GRA4152 - Object Oriented Programming with Python
 
 3. When it comes to the doc string for this project, I followed the “CashRegister” class doc string format (Lecture, Oct 30).
 
-4. For 3 visualization options, the user can have PDF files in the same directory where "train_vae.py is executed.
+4. For 3 visualization options, the user can have PDF file in the same directory where "train_vae.py is executed.
