@@ -1,28 +1,39 @@
 from tensorflow.keras import layers
+from abc import ABC, abstractmethod
 
 
-class BiCoder(layers.Layer):
+class BiCoder(layers.Layer, ABC):
     """
     BiCoder
     --------------------------
-    Base super class for both encoder and decoder in a Variational Autoencoder (VAE). 
-    Therefore, here you can find the call method that encoders and decoders is going to Inherited
-    This class inherit from tensorflow.keras.layers and Encoder and Decoder class is going to inherit from this 
-    class so it is possible to make clean interface that works with tensorflow.keras.layers. This class 
-    should not be used directly from user. Instead, you can create subclass "Encoder" and "Decoder" that extend 
-    "BiCoder" and need to use override BiCoder's method.
-    
+    Base superclass for both Encoder and Decoder in this Variational Autoencoder (VAE) project.
+
+    This class defines a common interface shared by encoders and decoders. By inheriting from
+    `tf.keras.layers.Layer`, it ensures that all subclasses integrate correctly with TensorFlow,
+    while the abstract `call` method enforces a required forward-pass interface.
+
+    This class should not be used directly. Instead, subclasses such as `Encoder` and `Decoder`
+    extend `BiCoder` and override the `call` method with their specific implementations.
+
     Methods:
-    1) __init__: Sets up the base BiCoder layer. In this method, it simply calls the parent constructor from 
-                "layers.Layer". 
-    
-    2) call:
-    This method gives a hint for user to override this method for supclass that is going to inherit this super class.
-    With this "call" method, it is possible to defines the forward pass of the layer. This method is made because of
-    defining a common interface that is going to be shared across sub class.
+    1) __init__:
+       Initializes the base BiCoder layer by calling the parent constructor from
+       `layers.Layer`. This enables standard Keras behavior such as variable tracking
+       and compatibility with `__call__`.
+
+    2) call (abstract):
+       Defines the required forward-pass interface that must be implemented by subclasses.
+       This method enforces consistency across Encoder and Decoder:
+       - Encoder: inputs = x (mini-batch of images) → returns (mu, std) for q(z|x)
+       - Decoder: inputs = z (latent vectors)       → returns (mu, std) for p(x|z)
     """
+
     def __init__(self):
         super().__init__()
-    
-    def call(self):
-        print("Override this call method.")
+
+    @abstractmethod
+    def call(self, inputs):
+        """
+        Forward pass interface to be implemented by subclasses.
+        """
+        raise NotImplementedError("Subclasses must override BiCoder.call(x).")
