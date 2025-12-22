@@ -1,5 +1,3 @@
-GRA41522 : Object Oriented Programming with Python
-
 1. Every file should be in the same directory.
 
 2. For visualization, the user can have PDF file in the same directory where "train_vae.py" is executed.
