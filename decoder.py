@@ -5,8 +5,7 @@ from neural_networks import decoder_mlp, decoder_conv
 
 
 class Decoder(BiCoder):
-    def __init__(self, dset = "mnist_bw"):
-        """
+    """
         Decoder
         --------------------------
         The Decoder class takes a latent sample z and transforms it back into the distribution p(x|z). The parameters that made from
@@ -25,9 +24,8 @@ class Decoder(BiCoder):
         @param z: Latent vectors sampled from q(z|x) or from the prior p(z).
         @return (mu, std): "mu" is the reconstructed mean image and "std" is a fixed number 0.75, representing 
                             standard deviation of p(x|z).
-        """
-
-
+    """
+    def __init__(self, dset = "mnist_bw"):
         super().__init__()
 
         if dset == "mnist_bw":
